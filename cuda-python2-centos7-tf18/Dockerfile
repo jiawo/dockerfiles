@@ -13,7 +13,8 @@ RUN mv /etc/yum.repos.d/kolla-all.repo /etc/yum.repos.d/kolla-all.repo_bak && \
 RUN yum install -y unzip make httpd
 RUN yum install -y libSM-1.2.2-2.el7.x86_64 libXrender-0.9.10-1.el7.x86_64 libXext-1.3.3-3.el7.x86_64
 
-#TODO(hxl) mod httpd config
+RUN sed -i "s|\/var\/www\/html|\/opt\/autolabel|g" /etc/httpd/conf/httpd.conf && \
+    rm -rf /etc/httpd/conf.d/welcome.conf
 
 RUN rm -rf /etc/yum.repos.d/CentOS-Base.repo && \
     mv /etc/yum.repos.d/kolla-all.repo_bak /etc/yum.repos.d/kolla-all.repo
