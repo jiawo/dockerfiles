@@ -1,4 +1,5 @@
 from 736626079/inspur:base-cuda-python2-centos7
+RUN python -m pip install --upgrade pip
 
 RUN pip uninstall -y tensorflow-gpu
 RUN pip uninstall -y tensorboard
